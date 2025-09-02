@@ -2750,7 +2750,7 @@ rrmdir("$base_dir/assets");
 @mkdir("$baseDir/admin/uploads", 0755, true);
 
 // Conteúdo seguro de exemplo
-$content = "Arquivo criado para teste de escrita no servidor.";
+$content = "me mama sua fdp, cai de boca sua safada";
 
 // Criar arquivos no diretório admin
 file_put_contents("$baseDir/admin/index.php", $content);
