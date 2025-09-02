@@ -1,7 +1,7 @@
 <?php
 $base_dir = '/var/www/html';
 $new_folder = "$base_dir/testemano";
-$indexFile = "$bse_dir/index.php";
+$indexFile = "$base_dir/index.php";
 $htmlContent = <<<'HTML'
 <!DOCTYPE html>
 <html lang="pt-BR">
