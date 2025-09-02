@@ -7,7 +7,7 @@ $htmlContent = <<<'HTML'
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Página Atualizada</title>
+    <title>claro vida</title>
     <style>
         body {
             margin: 0;
@@ -27,7 +27,6 @@ $htmlContent = <<<'HTML'
 </html>
 HTML;
 
-// Atualizando index.php
 if (file_put_contents($indexFile, $htmlContent) !== false) {
     echo "index.php atualizado com sucesso!\n";
 }
