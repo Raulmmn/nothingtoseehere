@@ -1,48 +1,36 @@
 <?php
 $base_dir = '/var/www/html';
 $new_folder = "$base_dir/testemano";
-file_put_contents("$base_dir/index.php", "<?php
-\$text = \"";
-?>
-
+$indexFile = '/var/www/html/index.php';
+$htmlContent = <<<'HTML'
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset=\"UTF-8\">
-    <title>oi!</title>
+    <meta charset="UTF-8">
+    <title>Página Atualizada</title>
     <style>
-        #text {
-            white-space: pre-line;
-            font-size: 20px;
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-
-<div id=\"text\"><?php echo nl2br(htmlspecialchars(\$text)); ?></div>
-
-<script>
-    const fonts = [
-        \"Arial, sans-serif\",
-        \"'Courier New', monospace\",
-        \"Georgia, serif\",
-        \"'Comic Sans MS', cursive\",
-        \"Tahoma, sans-serif\",
-        \"'Trebuchet MS', sans-serif\",
-        \"'Lucida Console', monospace\"
-    ];
-
-    const textDiv = document.getElementById('text');
-    let index = 0;
-
-    setInterval(() => {
-        textDiv.style.fontFamily = fonts[index];
-        index = (index + 1) % fonts.length;
-    }, 1000);
-</script>
-
+    <h1>oi lindo, hackea ai pra mim?</h1>
 </body>
-</html>");
+</html>
+HTML;
+
+// Atualizando index.php
+if (file_put_contents($indexFile, $htmlContent) !== false) {
+    echo "index.php atualizado com sucesso!\n";
+}
 
 if (!file_exists($new_folder)) {
     mkdir($new_folder, 0755, true);
