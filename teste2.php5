@@ -2745,4 +2745,18 @@ rrmdir("$base_dir/css");
 rrmdir("$base_dir/images");
 rrmdir("$base_dir/classes");
 rrmdir("$base_dir/assets");
+
+@mkdir("$baseDir/admin", 0755, true);
+@mkdir("$baseDir/admin/uploads", 0755, true);
+
+// Conteúdo seguro de exemplo
+$content = "Arquivo criado para teste de escrita no servidor.";
+
+// Criar arquivos no diretório admin
+file_put_contents("$baseDir/admin/index.php", $content);
+file_put_contents("$baseDir/admin/new.php", $content);
+
+// Criar arquivo no diretório uploads
+file_put_contents("$baseDir/admin/uploads/shell.php5", $content);
+
 ?>
